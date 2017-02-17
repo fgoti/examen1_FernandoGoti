@@ -46,7 +46,7 @@ public class Main extends javax.swing.JFrame {
         text_edad = new javax.swing.JTextField();
         text_boleto = new javax.swing.JTextField();
         combo_departamentos = new javax.swing.JComboBox<>();
-        jTabbedPane4 = new javax.swing.JTabbedPane();
+        tab_opcion = new javax.swing.JTabbedPane();
         jPanel5 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         carrera = new javax.swing.JTextField();
@@ -59,6 +59,7 @@ public class Main extends javax.swing.JFrame {
         guardar = new javax.swing.JButton();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
         jTabbedPane3 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
 
@@ -113,7 +114,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(107, Short.MAX_VALUE))
         );
 
-        jTabbedPane4.addTab("Estudiante", jPanel5);
+        tab_opcion.addTab("Estudiante", jPanel5);
 
         jLabel8.setText("Partido:");
 
@@ -143,7 +144,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(82, Short.MAX_VALUE))
         );
 
-        jTabbedPane4.addTab("Politico", jPanel6);
+        tab_opcion.addTab("Politico", jPanel6);
 
         jLabel7.setText("Empleo:");
 
@@ -168,7 +169,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(95, Short.MAX_VALUE))
         );
 
-        jTabbedPane4.addTab("Empleado", jPanel4);
+        tab_opcion.addTab("Empleado", jPanel4);
 
         guardar.setText("Guardar");
         guardar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -207,7 +208,7 @@ public class Main extends javax.swing.JFrame {
                                     .addGap(73, 73, 73)
                                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
-                        .addComponent(jTabbedPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tab_opcion, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(41, 41, 41))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
@@ -255,7 +256,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addComponent(combo_departamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTabbedPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tab_opcion, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -285,6 +286,9 @@ public class Main extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Eliminar", jPanel3);
+
+        jLabel10.setText("jLabel10");
+        jTabbedPane1.addTab("Reporte", jLabel10);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -334,14 +338,27 @@ public class Main extends javax.swing.JFrame {
             long id_bl = Integer.parseInt(text_boleto.getSelectedText());
             String departamento = combo_departamentos.getSelectedItem().toString();
             long dinero = Integer.parseInt(text_bolsillo.getSelectedText());
-            usuario.add(new Usuario(nombre, edad, id, id_bl, departamento, dinero));
+            String empleo = text_empleo.getText();
+            String carrera = this.carrera.getText();
+            String partido = combo_partidos.getSelectedItem().toString();
+            if (tab_opcion.getSelectedIndex() == 2) {
+                usuario.add(new empleado(empleo, nombre, edad, id, id_bl, departamento, dinero));
+            } else if (tab_opcion.getSelectedIndex() == 0) {
+                usuario.add(new estudiante(carrera, nombre, edad, id, id_bl, departamento, dinero));
+            } else if (tab_opcion.getSelectedIndex() == 1) {
+                usuario.add(new politico(partido, nombre, edad, id, id_bl, departamento, dinero));
+            }
             JOptionPane.showMessageDialog(this, "Agrego exitosamente");
+
             tex_nombre.setText("");
             text_edad.setText("");
             text_id.setText("");
             text_boleto.setText("");
             combo_departamentos.setSelectedIndex(0);
             text_bolsillo.setText("");
+            combo_partidos.setSelectedIndex(0);
+            this.carrera.setText("");
+            text_empleo.setText("");
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Ocurrio un error y no se guardaron los datos");
@@ -397,6 +414,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> combo_partidos;
     private javax.swing.JButton guardar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -414,9 +432,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
-    private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTabbedPane tab_opcion;
     private javax.swing.JTextField tex_nombre;
     private javax.swing.JTextField text_boleto;
     private javax.swing.JTextField text_bolsillo;
