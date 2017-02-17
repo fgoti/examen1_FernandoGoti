@@ -3,19 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package examen1_fernandogoti;
 
 /**
  *
  * @author Fernando Goti
  */
-public class Examen1_fernandogoti {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
+public class Usuario {
+    private String Nombre;
+    private int Edad;
+    private int ID;
+    private int ID_BL;
+    
     
 }
