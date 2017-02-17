@@ -3,16 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package exam;
 
 /**
  *
  * @author Fernando Goti
  */
-public class Usuario {
-    private String Nombre;
-    private int Edad;
-    private int ID;
-    private int ID_BL;
-    
+public class estudiante {
     
 }

@@ -3,11 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package exam;
 
 /**
  *
  * @author Fernando Goti
  */
+
+String Nombre;
+int clave;
+
+import javax.swing.JOptionPane;
+
 public class Main extends javax.swing.JFrame {
 
     /**
@@ -70,14 +77,17 @@ public class Main extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        Contraseña = JOptionPane.showInputDialog(null, "Ingrese nombre");
+        System.out.println(Contraseña);
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Main().setVisible(true);
             }
         });
-        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
+    static String Contraseña;
 }
