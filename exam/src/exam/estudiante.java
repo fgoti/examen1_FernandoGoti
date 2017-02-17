@@ -17,10 +17,12 @@ public class estudiante extends Usuario {
         super();
     }
 
-    public estudiante(String estudiante, String Nombre, int Edad, int ID, int ID_BL, String departamento, int dinero) {
+    public estudiante(String carrera, String Nombre, long Edad, long ID, long ID_BL, String departamento, long dinero) {
         super(Nombre, Edad, ID, ID_BL, departamento, dinero);
-        this.carrera = estudiante;
+        this.carrera = carrera;
     }
+
+
 
     public String getEstudiante() {
         return carrera;

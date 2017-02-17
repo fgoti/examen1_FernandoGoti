@@ -9,6 +9,7 @@ package exam;
  *
  * @author Fernando Goti
  */
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class Main extends javax.swing.JFrame {
@@ -55,7 +56,7 @@ public class Main extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         text_empleo = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        guardar = new javax.swing.JButton();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         jTabbedPane3 = new javax.swing.JTabbedPane();
@@ -74,6 +75,12 @@ public class Main extends javax.swing.JFrame {
         jLabel5.setText("Departamento");
 
         jLabel6.setText("Dinero en su Bolsillo");
+
+        text_bolsillo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                text_bolsilloActionPerformed(evt);
+            }
+        });
 
         combo_departamentos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. Atlantida ", "2. Colón ", "3. Comayagua ", "4. Copán ", "5. Cortés ", "6. Choluteca ", "7. El Paraíso", "8. Francisco Morazan ", "9. Gracias a Dios ", "10. Intibucá ", "11. Islas de la Bahía", "12. La Paz ", "13. Lempira ", "14. Ocotepeque", "15. Olancho", "16. Santa Bárbara ", "17. Valle ", "18. Yoro " }));
 
@@ -163,10 +170,10 @@ public class Main extends javax.swing.JFrame {
 
         jTabbedPane4.addTab("Empleado", jPanel4);
 
-        jButton1.setText("Guardar");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        guardar.setText("Guardar");
+        guardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                guardarMouseClicked(evt);
             }
         });
 
@@ -212,7 +219,7 @@ public class Main extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(text_bolsillo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(guardar)
                         .addGap(120, 120, 120))))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -254,7 +261,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(text_bolsillo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(jButton1))
+                    .addComponent(guardar))
                 .addGap(44, 44, 44))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -318,9 +325,32 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_carreraActionPerformed
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void guardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1MouseClicked
+        try {
+            String nombre = tex_nombre.getText();
+            long edad = Long.parseLong(text_edad.getText());
+            long id = Integer.parseInt(text_id.getSelectedText());
+            long id_bl = Integer.parseInt(text_boleto.getSelectedText());
+            String departamento = combo_departamentos.getSelectedItem().toString();
+            long dinero = Integer.parseInt(text_bolsillo.getSelectedText());
+            usuario.add(new Usuario(nombre, edad, id, id_bl, departamento, dinero));
+            JOptionPane.showMessageDialog(this, "Agrego exitosamente");
+            tex_nombre.setText("");
+            text_edad.setText("");
+            text_id.setText("");
+            text_boleto.setText("");
+            combo_departamentos.setSelectedIndex(0);
+            text_bolsillo.setText("");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Ocurrio un error y no se guardaron los datos");
+        }
+    }//GEN-LAST:event_guardarMouseClicked
+
+    private void text_bolsilloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_bolsilloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_text_bolsilloActionPerformed
 
     /**
      * @param args the command line arguments
@@ -365,7 +395,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField carrera;
     private javax.swing.JComboBox<String> combo_departamentos;
     private javax.swing.JComboBox<String> combo_partidos;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton guardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -395,4 +425,5 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField text_id;
     // End of variables declaration//GEN-END:variables
     static String Contraseña;
+    static ArrayList usuario = new ArrayList();
 }

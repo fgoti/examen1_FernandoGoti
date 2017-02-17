@@ -17,7 +17,7 @@ public class politico extends Usuario {
         super();
     }
 
-    public politico(String partido, String Nombre, int Edad, int ID, int ID_BL, String departamento, int dinero) {
+    public politico(String partido, String Nombre, long Edad, long ID, long ID_BL, String departamento, long dinero) {
         super(Nombre, Edad, ID, ID_BL, departamento, dinero);
         this.partido = partido;
     }
