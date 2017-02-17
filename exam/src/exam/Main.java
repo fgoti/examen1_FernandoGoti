@@ -10,7 +10,10 @@ package exam;
  * @author Fernando Goti
  */
 import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class Main extends javax.swing.JFrame {
 
@@ -30,7 +33,7 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tabprin = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -60,10 +63,22 @@ public class Main extends javax.swing.JFrame {
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaxxx = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
         jTabbedPane3 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        tabprin.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                tabprinStateChanged(evt);
+            }
+        });
 
         jLabel1.setText("Nombre:");
 
@@ -271,8 +286,8 @@ public class Main extends javax.swing.JFrame {
                     .addContainerGap(277, Short.MAX_VALUE)))
         );
 
-        jTabbedPane1.addTab("Agregar", jPanel1);
-        jTabbedPane1.addTab("Modificar", jTabbedPane2);
+        tabprin.addTab("Agregar", jPanel1);
+        tabprin.addTab("Modificar", jTabbedPane2);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -285,16 +300,79 @@ public class Main extends javax.swing.JFrame {
             .addGap(0, 369, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Eliminar", jPanel3);
+        tabprin.addTab("Eliminar", jPanel3);
+        tabprin.addTab("", jLabel10);
+        tabprin.addTab("", jScrollPane1);
 
-        jLabel10.setText("jLabel10");
-        jTabbedPane1.addTab("Reporte", jLabel10);
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "ID", "Edad", "Departamento"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Long.class, java.lang.Long.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tabprin.addTab("", jTable1);
+
+        tablaxxx.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Edad", "ID", "Departamento"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Long.class, java.lang.Long.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tablaxxx);
+
+        tabprin.addTab("", jScrollPane2);
+
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Edad", "Departamento", "ID"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Long.class, java.lang.String.class, java.lang.Long.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(jTable3);
+
+        tabprin.addTab("Enlistar", jScrollPane3);
+
+        jTabbedPane3.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPane3StateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 566, Short.MAX_VALUE)
+            .addGap(0, 590, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,27 +385,24 @@ public class Main extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(jTabbedPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(tabprin, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jTabbedPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tabprin, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void carreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carreraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_carreraActionPerformed
 
     private void guardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarMouseClicked
         // TODO add your handling code here:
@@ -342,11 +417,11 @@ public class Main extends javax.swing.JFrame {
             String carrera = this.carrera.getText();
             String partido = combo_partidos.getSelectedItem().toString();
             if (tab_opcion.getSelectedIndex() == 2) {
-                usuario.add(new empleado(empleo, nombre, edad, id, id_bl, departamento, dinero));
+                Persona.add(new empleado(empleo, nombre, edad, id, id_bl, departamento, dinero));
             } else if (tab_opcion.getSelectedIndex() == 0) {
-                usuario.add(new estudiante(carrera, nombre, edad, id, id_bl, departamento, dinero));
+                Persona.add(new estudiante(carrera, nombre, edad, id, id_bl, departamento, dinero));
             } else if (tab_opcion.getSelectedIndex() == 1) {
-                usuario.add(new politico(partido, nombre, edad, id, id_bl, departamento, dinero));
+                Persona.add(new politico(partido, nombre, edad, id, id_bl, departamento, dinero));
             }
             JOptionPane.showMessageDialog(this, "Agrego exitosamente");
 
@@ -365,9 +440,45 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_guardarMouseClicked
 
+    private void carreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carreraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_carreraActionPerformed
+
     private void text_bolsilloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_bolsilloActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_text_bolsilloActionPerformed
+
+
+    private void tabprinStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabprinStateChanged
+        // TODO add your handling code here:
+                if (evt.ge == 2) {//van a ver 2 eventos
+            Usuario s
+                    = (Usuario) combo_departamentos.getSelectedItem();
+
+            Object[] newrow = {
+                s.getDepartamento(),
+                s.getNombre(),
+                s.getID()
+            };
+            DefaultTableModel modelo
+                    = (DefaultTableModel) tablaxxx.getModel();
+            modelo.addRow(newrow);
+            tablaxxx.setModel(modelo);
+        }//fin del if
+    }//GEN-LAST:event_tabprinStateChanged
+
+    private void jTabbedPane3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane3StateChanged
+        // TODO add your handling code here:
+        if (tabprin.getSelectedIndex() == 1) {
+            DefaultComboBoxModel modelo
+                    = new DefaultComboBoxModel();
+            for (Usuario temp : Persona) {
+                modelo.addElement(temp);
+            }
+            combo_departamentos.setModel(modelo);
+        }
+        
+    }//GEN-LAST:event_jTabbedPane3StateChanged
 
     /**
      * @param args the command line arguments
@@ -398,7 +509,6 @@ public class Main extends javax.swing.JFrame {
 
         /* Create and display the form */
         Contraseña = JOptionPane.showInputDialog(null, "Ingrese nombre");
-        String codigoBinario = "";
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -429,12 +539,18 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable3;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTabbedPane tab_opcion;
+    private javax.swing.JTable tablaxxx;
+    private javax.swing.JTabbedPane tabprin;
     private javax.swing.JTextField tex_nombre;
     private javax.swing.JTextField text_boleto;
     private javax.swing.JTextField text_bolsillo;
@@ -443,5 +559,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField text_id;
     // End of variables declaration//GEN-END:variables
     static String Contraseña;
-    static ArrayList usuario = new ArrayList();
+    ArrayList<Usuario> Persona = new ArrayList();
+
 }
